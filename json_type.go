@@ -143,6 +143,10 @@ func (JSONSlice[T]) GormDBDataType(db *gorm.DB, field *schema.Field) string {
 }
 
 func (j JSONSlice[T]) GormValue(ctx context.Context, db *gorm.DB) clause.Expr {
+	if len(j) == 0 {
+		return gorm.Expr("NULL")
+	}
+
 	data, _ := json.Marshal(j)
 
 	switch db.Dialector.Name() {
