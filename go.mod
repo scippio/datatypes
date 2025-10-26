@@ -1,4 +1,4 @@
-module gorm.io/datatypes
+module github.com/scippio/datatypes
 
 go 1.19
 
